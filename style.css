@@ -86,7 +86,9 @@ header i, .logo {
 }
 
 .summary h1 span {
-    color: rgba(255, 255, 255, 0.7);
+    color: #ffc400;
+    font-weight: 900;
+    text-shadow: 0 2px 10px rgba(255, 196, 0, 0.4);
 }
 
 .summary p {
