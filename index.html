@@ -9,94 +9,140 @@
 </head>
 <body>
 
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <i class="fas fa-arrow-left close-btn" id="closeBtn"></i>
+    </div>
     
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <i class="fas fa-arrow-left close-btn" id="closeBtn"></i>
-        </div>
-        
-        <div class="sidebar-profile">
-            <img src="https://i.pravatar.cc/100" alt="Profile" class="menu-profile-pic">
-            <div class="profile-info">
-                <h3>Hello Alma</h3>
-                <p>alma.lawson@example.com</p>
-            </div>
-        </div>
-
-        <nav class="sidebar-nav">
-            <ul>
-                <li onclick="window.location.href='profile.html'"><i class="fas fa-pencil-alt"></i> Edit profile</li>
-                <li><i class="fas fa-calendar-alt"></i> Daily tasks</li>
-                <li><i class="fas fa-star"></i> Important tasks</li>
-                <li><i class="fas fa-check-double"></i> Done tasks</li>
-            </ul>
-        </nav>
-    </div>
-
-    <div class="app-container">
-        <div class="header-bg"></div>
-
-        <header>
-            <i class="fas fa-bars" id="burgerIcon"></i>
-            <div class="logo">Traco</div>
-            <img src="https://i.pravatar.cc/100" alt="Profile" class="profile-pic" onclick="window.location.href='profile.html'" style="cursor: pointer;">
-        </header>
-
-        <section class="summary">
-            <h1>You have a total of<br><span class="highlight">5 tasks</span> today!</h1>
-            <p>Saturday, September 10, 2022</p>
-        </section>
-
-        <div class="search-container">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search tasks">
-        </div>
-
-        <div class="filter-buttons">
-            <button class="filter-btn active">Today</button>
-            <button class="filter-btn">Week</button>
-            <button class="filter-btn">Month</button>
-        </div>
-
-        <div class="task-grid">
-            <div class="task-card school">
-                <span class="task-count">5</span>
-                <i class="fas fa-graduation-cap"></i>
-                <p>School</p>
-            </div>
-
-            <div class="task-card work">
-                <span class="task-count">3</span>
-                <i class="fas fa-briefcase"></i>
-                <p>Work</p>
-            </div>
-
-            <div class="task-card shop">
-                <span class="task-count">12</span>
-                <i class="fas fa-shopping-cart"></i>
-                <p>Shop</p>
-            </div>
-
-            <div class="task-card read">
-                <span class="task-count">2</span>
-                <i class="fas fa-book-open"></i>
-                <p>Read</p>
-            </div>
-
-            <div class="task-card workout">
-                <span class="task-count">3</span>
-                <i class="fas fa-running"></i>
-                <p>work out</p>
-            </div>
-
-            <div class="task-card add-btn">
-                <i class="fas fa-plus"></i>
-            </div>
+    <div class="sidebar-profile">
+        <img src="https://i.pravatar.cc/100" alt="Profile" class="menu-profile-pic">
+        <div class="profile-info">
+            <h3>Hello Alma</h3>
+            <p>alma.lawson@example.com</p>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <nav class="sidebar-nav">
+        <ul>
+            <li onclick="window.location.href='profile.html'"><i class="fas fa-pencil-alt"></i> Edit profile</li>
+            <li><i class="fas fa-calendar-alt"></i> Daily tasks</li>
+            <li><i class="fas fa-star"></i> Important tasks</li>
+            <li><i class="fas fa-check-double"></i> Done tasks</li>
+        </ul>
+    </nav>
+</div>
+
+<div class="app-container">
+    <div class="header-bg"></div>
+
+    <header>
+        <i class="fas fa-bars" id="burgerIcon"></i>
+        <div class="logo">Traco</div>
+        <img src="https://i.pravatar.cc/100" alt="Profile" class="profile-pic" onclick="window.location.href='profile.html'" style="cursor: pointer;">
+    </header>
+
+    <section class="summary">
+        <h1>You have a total of<br><span class="highlight">5 tasks</span> today!</h1>
+        <p>Saturday, September 10, 2022</p>
+    </section>
+
+    <div class="search-container">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search tasks">
+    </div>
+
+    <div class="filter-buttons">
+        <button class="filter-btn active">Today</button>
+        <button class="filter-btn">Week</button>
+        <button class="filter-btn">Month</button>
+    </div>
+
+<div class="task-grid" id="taskGrid">
+        <div class="task-card school">
+            <span class="task-count">5</span>
+            <i class="fas fa-graduation-cap"></i>
+            <p>School</p>
+        </div>
+
+        <div class="task-card work">
+            <span class="task-count">3</span>
+            <i class="fas fa-briefcase"></i>
+            <p>Work</p>
+        </div>
+
+        <div class="task-card shop">
+            <span class="task-count">12</span>
+            <i class="fas fa-shopping-cart"></i>
+            <p>Shop</p>
+        </div>
+
+        <div class="task-card read">
+            <span class="task-count">2</span>
+            <i class="fas fa-book-open"></i>
+            <p>Read</p>
+        </div>
+
+        <div class="task-card workout">
+            <span class="task-count">3</span>
+            <i class="fas fa-running"></i>
+            <p>work out</p>
+        </div>
+
+        <div class="task-card add-btn" id="openModalBtn">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="taskModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="header-text">
+                <h3>Add New Category</h3>
+                <p>Create a custom folder for your tasks.</p>
+            </div>
+        </div>
+
+        <div class="category-inputs">
+            
+            <div class="input-group">
+                <label>Select Icon</label>
+                <div class="icon-picker" id="iconPicker">
+                    <i class="fas fa-list-ul active" data-icon="fa-list-ul"></i>
+                    <i class="fas fa-heart" data-icon="fa-heart"></i>
+                    <i class="fas fa-home" data-icon="fa-home"></i>
+                    <i class="fas fa-gamepad" data-icon="fa-gamepad"></i>
+                    <i class="fas fa-dumbbell" data-icon="fa-dumbbell"></i>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Category Name</label>
+                <input type="text" id="categoryName" placeholder="e.g. Personal" maxlength="12">
+            </div>
+
+            <div class="input-group">
+                <label>Choose Color</label>
+                <div class="color-picker" id="colorPicker">
+                    <div class="color-opt active" style="background: #318693;" data-color="#318693"></div>
+                    <div class="color-opt" style="background: #6cb9db;" data-color="#6cb9db"></div>
+                    <div class="color-opt" style="background: #bd8e77;" data-color="#bd8e77"></div>
+                    <div class="color-opt" style="background: #6d76d4;" data-color="#6d76d4"></div>
+                    <div class="color-opt" style="background: #8cc074;" data-color="#8cc074"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-actions">
+            <button class="btn-cancel" id="closeModal">Cancel</button>
+            <button class="btn-ok" id="saveCategory">Save</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
