@@ -1,0 +1,367 @@
+/* =========================================
+   1. GLOBAL STYLES
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8faff;
+    min-height: 100vh;
+}
+
+/* =========================================
+   2. LAYOUT & NEW HEADER BACKGROUND
+   ========================================= */
+.app-container {
+    width: 100%;
+    min-height: 100vh;
+    background: #f8faff;
+    position: relative;
+    overflow-x: hidden;
+    padding: 0; 
+}
+
+/* The new solid premium blue header */
+.header-bg {
+    background: linear-gradient(135deg, #00458f 0%, #044d9c 100%);
+    height: 310px;
+    width: 100%;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+/* Ensure content stays above the blue background */
+header, .summary, .search-container, .filter-buttons, .task-grid, .profile-main, .profile-options {
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================
+   3. HEADER & SUMMARY (FIXED FOR DARK BG)
+   ========================================= */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 25px 0;
+    margin-bottom: 50px;
+}
+
+header i, .logo {
+    color: white !important;
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+
+.profile-pic {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,0.4);
+}
+
+.summary {
+    text-align: center;
+    margin-bottom: 35px;
+    padding: 0 25px;
+}
+
+.summary h1 {
+    font-size: 2.2rem;
+    color: white; 
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.summary h1 span {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.summary p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* =========================================
+   4. SEARCH BAR
+   ========================================= */
+.search-container {
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    border-radius: 20px;
+    margin: 0 25px 60px; /* Changing 45px to 60px pushes the buttons down */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.search-container i {
+    color: #00458f;
+    margin-right: 15px;
+}
+
+.search-container input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1.05rem;
+}
+
+/* =========================================
+   5. NAVIGATION (FILTERS)
+   ========================================= */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 25px 45px;
+}
+
+.filter-btn {
+    padding: 6px 24px;
+    border-radius: 25px;
+    border: 1.5px solid #00458f;
+    background: transparent;
+    color: #00458f;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.filter-btn.active {
+    background: #00458f;
+    color: white;
+}
+
+/* =========================================
+   6. TASK GRID & CARDS
+   ========================================= */
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    padding: 0 25px 25px;
+}
+
+.task-card {
+    aspect-ratio: 1 / 1;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 15px;
+}
+
+.task-count {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.task-card i {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 12px;
+}
+
+.task-card p {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: white;
+}
+
+.school { background-color: #318693; }
+.work { background-color: #6cb9db; }
+.shop { background-color: #bd8e77; }
+.read { background-color: #6d76d4; }
+.workout { background-color: #8cc074; }
+
+.add-btn {
+    background: white;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.08);
+}
+
+.add-btn i {
+    color: #ec4899;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+/* =========================================
+   7. SIDEBAR MENU
+   ========================================= */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 998;
+    display: none;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100%;
+    background: white;
+    z-index: 999;
+    transition: left 0.3s ease;
+    padding: 30px 20px;
+}
+
+.sidebar.active { left: 0; }
+.sidebar-overlay.active { display: block; }
+
+.close-btn {
+    font-size: 1.5rem;
+    color: #00458f;
+    cursor: pointer;
+}
+
+.sidebar-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 30px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.sidebar-profile p {
+    font-size: 0.8rem;
+    color: #718096;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+}
+
+.menu-profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.sidebar-nav li {
+    padding: 15px 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #718096;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.sidebar-nav li:hover {
+    background-color: #eef2ff;
+    color: #00458f;
+    border-radius: 12px;
+}
+
+/* =========================================
+   8. PROFILE PAGE STYLES
+   ========================================= */
+.profile-main {
+    text-align: center;
+    margin: -10px 0 30px; /* Changed 20px to -10px to pull everything UP */
+    position: relative;
+    z-index: 1;
+}
+
+.profile-image-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px;
+}
+
+.large-profile-pic {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+}
+
+.edit-badge {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: #00458f;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid white;
+}
+
+.profile-details h2 {
+    color: white;
+    font-size: 1.8rem;
+}
+
+.profile-details p {
+    color: rgba(255,255,255,0.8);
+}
+
+.profile-options {
+    background: white;
+    border-radius: 30px;
+    margin: 20px;
+    padding: 10px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+}
+
+.option-item {
+    display: flex;
+    align-items: center;
+    padding: 18px;
+    cursor: pointer;
+}
+
+.option-item i:first-child {
+    width: 40px;
+    height: 40px;
+    background: #eef2ff;
+    color: #00458f;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.option-item span {
+    flex: 1;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.option-item.logout i:first-child {
+    background: #fff5f5;
+    color: #f56565;
+}
